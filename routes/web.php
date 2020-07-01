@@ -19,7 +19,9 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get( '/home', 'HomeController@index' )->name( 'home' );
+Route::get( '/', 'HomeController@index' )->name( 'home' );
+Route::get( 'shop', 'HomeController@shop' )->name( 'shop' );
+Route::get('/product-category/{id}', 'HomeController@showProduct')->name('product-category');
 
 Route::group( ['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
@@ -30,8 +32,4 @@ Route::group( ['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource( 'product-category', '\App\Http\Controllers\Admin\ProductCategoryController' );
     Route::resource( 'product', '\App\Http\Controllers\Admin\ProductController' );
 
-} );
-
-Route::get( '/', function () {
-    return view( "layouts.frontend" );
 } );
