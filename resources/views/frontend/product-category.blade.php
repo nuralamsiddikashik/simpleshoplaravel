@@ -6,7 +6,7 @@
         <div class="row justify-content-md-center">
             <div class="col-md-12">
                 <ul class="products columns-3">
-                    @foreach($showProducts as $key => $singleProduct)
+                    @foreach($category->product as $key => $singleProduct)
                    
                     <li class="product {{ ($key+1) % 3 == 0 ? 'last' : '' }}">
                         <div class="product-wrap">

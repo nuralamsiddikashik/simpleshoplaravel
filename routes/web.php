@@ -21,7 +21,7 @@ Auth::routes();
 
 Route::get( '/', 'HomeController@index' )->name( 'home' );
 Route::get( 'shop', 'HomeController@shop' )->name( 'shop' );
-Route::get('/product-category/{id}', 'HomeController@showProduct')->name('product-category');
+Route::get('/product-category/{category_slug}', 'HomeController@showProduct')->name('product-category');
 
 Route::group( ['prefix' => 'admin', 'middleware' => ['auth']], function () {
 

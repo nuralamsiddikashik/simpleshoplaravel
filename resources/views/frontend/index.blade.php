@@ -36,7 +36,7 @@
                     <ul class="products columns-3">
                         @foreach($categories as $product_category )
                             <li class="product-category">
-                                <a href="{{ route('product-category',$product_category->id ) }}">
+                                <a href="{{ route('product-category',$product_category->category_slug ) }}">
                                     <img src="{{ asset($product_category->category_image )}}" alt="Decor">
                                     <h2 class="woocommerce-loop-category__title">
                                         {{ $product_category->category_name }}

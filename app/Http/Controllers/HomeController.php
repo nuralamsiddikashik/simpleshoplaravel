@@ -30,9 +30,9 @@ class HomeController extends Controller {
         return view( 'frontend.shop' );
     }
 
-    public function showProduct( $id ) {
-        $showProducts = Product::where( 'product_category_id', $id )->orderBy( 'created_at', 'DESC' )->paginate( 20 );
-        return view( "frontend.product-category", compact( "showProducts" ) );
+    public function showProduct( $category_slug ) {
+        $category = ProductCategory::where('category_slug', $category_slug)->first();
+        return view( "frontend.product-category", compact( "category" ) );
     }
 
 }
