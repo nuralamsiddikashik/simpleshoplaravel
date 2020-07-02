@@ -71,7 +71,7 @@
                        
                         <li class="product {{ ($key+1) % 3 == 0 ? 'last' : '' }}">
                             <div class="product-wrap">
-                                <a href="#" class="">
+                                <a href="{{ route('product-single', $product->product_slug )}}" class="">
                                     <img src="{{ $product->product_image }}" alt="">
                                 </a>
                                 <a href="#" class="button product_type_simple add_to_cart_button ajax_add_to_cart">
@@ -80,7 +80,7 @@
                             </div>
                             <div class="woocommerce-product-title-wrap">
                                 <h2 class="woocommerce-loop-product__title">
-                                    <a href="#">{{ $product->product_title }}</a>
+                                    <a href="{{ route('product-single', $product->product_slug )}}">{{ $product->product_title }}</a>
                                 </h2>
                                 <a href="#" class="wish-list"><i class="fa fa-heart-o"></i></a>
                             </div>

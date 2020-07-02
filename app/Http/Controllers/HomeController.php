@@ -31,8 +31,12 @@ class HomeController extends Controller {
     }
 
     public function showProduct( $category_slug ) {
-        $category = ProductCategory::where('category_slug', $category_slug)->first();
+        $category = ProductCategory::where( 'category_slug', $category_slug )->first();
         return view( "frontend.product-category", compact( "category" ) );
     }
 
+    public function showSingleProduct( $product_slug ) {
+        $product = Product::where( 'product_slug', $product_slug )->first();
+        return view( 'frontend.product-single', compact( 'product' ) );
+    }
 }

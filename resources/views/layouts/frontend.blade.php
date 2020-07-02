@@ -125,7 +125,7 @@
                             <li><a href="#" class="" ><i class="fa fa-user"></i></a></li>
                             <!--<li><a href="#" class="" ><i class="fa fa-shopping-basket"></i></a></li>-->
                             <li class="dropdown mini-cart">
-                                <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-shopping-basket"></i><span class="cart-quantity-highlighter">2</span></a>
+                                <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-shopping-basket"></i><span class="cart-quantity-highlighter">{{ Cart::total_in_cart() }}</span></a>
                                 <ul class="dropdown-menu dropdown-menu-right widget_shopping_cart_content woocommerce-mini-cart cart_list product_list_widget ">
                                     <li class="woocommerce-mini-cart-item mini_cart_item">
                                         <a href="#" class="remove remove_from_cart_button" aria-label="Remove this item" data-product_id="180" data-cart_item_key="045117b0e0a11a242b9765e79cbf113f" data-product_sku="9015-DF-1">×</a>													<a class="mini_cart_item-image" href="https://stockie.colabr.io/demo1/shop/gosta-leather-chair/">
@@ -202,9 +202,42 @@
 <script src="{{asset('frontend')}}/assets/vendor/jquery.min.js"></script>
 <script src="{{asset('frontend')}}/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="{{asset('frontend')}}/assets/vendor/popper.min.js"></script>
+<script src="{{asset('js/app.js')}}"></script>
 
 <!--init scripts-->
 <script src="{{asset('frontend')}}/assets/js/scripts.js"></script>
+<script>
+    $(document).on('click', '.tabs li', function(e) {
+        e.preventDefault()
+        $('.tabs li').removeClass('active')
+        $(this).addClass('active')
+        $('.woocommerce-Tabs-panel').css('display', 'none')
 
+        let current_id = $(this).attr('aria-controls')
+
+        $('#'+current_id).css('display', 'block')
+    })
+</script>
+
+<script>
+    $(document).on('click', '.add-to-cart', function(e) {
+        e.preventDefault()
+
+        let p_id = $(this).data('id')
+        let p_qty = $('#quantity_'+p_id).val()
+        p_qty = p_qty == undefined ? 1 : p_qty
+
+        axios.post('{{ route('add_to_cart') }}', {
+            id: p_id,
+            qty: p_qty
+        })
+            .then(res => {
+                console.log(res.data.items)
+                $('.cart-quantity-highlighter').text(res.data.count)
+                
+            })
+            .catch()
+    })
+</script>
 </body>
 </html>
