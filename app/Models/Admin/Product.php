@@ -14,4 +14,8 @@ class Product extends Model {
 
     }
 
+    public function finalPrice() {
+        return $this->product_sell_price == 0 ? $this->product_price : $this->product_sell_price;
+    }
+
 }

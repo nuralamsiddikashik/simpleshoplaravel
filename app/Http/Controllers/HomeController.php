@@ -12,7 +12,7 @@ class HomeController extends Controller {
      * @return void
      */
     public function __construct() {
-        $this->middleware( 'auth' );
+        //$this->middleware( 'auth' );
     }
 
     /**
@@ -39,4 +39,10 @@ class HomeController extends Controller {
         $product = Product::where( 'product_slug', $product_slug )->first();
         return view( 'frontend.product-single', compact( 'product' ) );
     }
+
+    public function cart() {
+        return view( 'frontend.cart' );
+    }
+
+
 }

@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration {
             $table->string( 'product_slug' )->unique();
             $table->string( 'product_image' );
             $table->string( 'product_price' );
-            $table->string( 'product_sell_price' );
+            $table->string( 'product_sell_price' )->default(0);
             $table->text( 'product_description' );
             $table->text( 'product_short_description' );
             $table->string( 'product_qty' );
