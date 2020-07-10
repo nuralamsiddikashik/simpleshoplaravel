@@ -57,7 +57,11 @@
                                     <td>{{ $product->product_sell_price }}</td>
                                     <td>{{ $product->product_qty }}</td>
                                     <td>{{ $product->product_sku }}</td>
-                                    <td>{{ $product->product_categories->category_name }}</td>
+                                    <td>
+                                        @if($product->product_categories)
+                                        {{ $product->product_categories->category_name }}
+                                        @endif
+                                    </td>
                                     <td>
                                         <a href="{{ route('product.edit', [ $product->id ])}}" class="btn btn-sm btn-primary mr-1"><i class="fas fa-edit"></i></a>
                                       

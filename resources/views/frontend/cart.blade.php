@@ -1,6 +1,7 @@
 @extends('layouts.frontend')
 @section('content')
 
+
 <section class="page-title">
     <div class="container">
         <div class="row">

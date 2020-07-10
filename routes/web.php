@@ -33,14 +33,18 @@ Route::get( '/cart', 'HomeController@cart' )->name( 'cart' );
 
 Route::post( '/remove_product', '\App\Http\Controllers\Frontend\CartController@remove_from_cart' )->name( 'remove_product' );
 
-Route::group( ['prefix' => 'admin', 'middleware' => ['auth']], function () {
+Route::group( ['prefix' => 'admin', 'middleware' => ['is_admin']], function () {
 
     Route::get( '/dashboard', function () {
         return view( 'admin.dashboard.index' );
-    } );
+    } )->name('admin-dashboard');
 
     Route::resource( 'product-category', '\App\Http\Controllers\Admin\ProductCategoryController' );
 
     Route::resource( 'product', '\App\Http\Controllers\Admin\ProductController' );
 
+} );
+
+Route::middleware( 'auth' )->namespace( 'Frontend' )->group( function () {
+    Route::get('/user/dashboard', 'UserDashboardController@dashboard')->name('user-dashboard');
 } );

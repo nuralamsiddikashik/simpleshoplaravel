@@ -37,7 +37,7 @@
     <link href="{{asset('frontend')}}/assets/css/custom.css" rel="stylesheet">
 
 </head>
-<body class="archive  woocommerce">
+<body class="archive  woocommerce woocommerce-account">
 
 <!--header start-->
 <header class="app-header">
@@ -122,7 +122,13 @@
                             </li>
                             <li><a href="contact-us.html">Contact Us</a></li>
                             <li><a href="#" class="" id="search-icon"><i class="fa fa-search"></i></a></li>
-                            <li><a href="#" class="" ><i class="fa fa-user"></i></a></li>
+                            @guest
+                                <li><a href="{{route('login')}}" class="" >Login</a></li>
+                                @else 
+                                <li><a href="{{ route('user-dashboard') }}" class="" ><i class="fa fa-user"></i></a></li>
+                            @endguest
+                           
+                            
                             <!--<li><a href="#" class="" ><i class="fa fa-shopping-basket"></i></a></li>-->
                             <li class="dropdown mini-cart">
                                 <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-shopping-basket"></i><span class="cart-quantity-highlighter">{{ Cart::total_in_cart() }}</span></a>

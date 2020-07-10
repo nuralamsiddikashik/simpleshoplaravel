@@ -15,7 +15,8 @@ class CartService {
             <div class="mini_cart_item-desc">
                 <a class="font-titles" href="' . route( 'product-single', $product->product_slug ) . '">' . $product->product_title . '</a>
                 <span class="woo-c_product_category">
-                        <a href="' . route( 'product-single', $product->product_categories->category_slug ) . '" rel="tag">' . $product->product_categories->category_name . '</a>
+                        <a href="' . route( 'product-single', $product->product_categories->category_slug ) . '">' . $product->product_categories->category_name . 
+                        '</a>
                     </span>
                 <span class="quantity">' . session( 'cart' )[$product->id]['qty'] . ' × <span class="woocs_special_price_code"><span class="woocommerce-Price-amount amount">' . $product->finalPrice() . '<span class="woocommerce-Price-currencySymbol">$</span></span></span></span>
             </div>
