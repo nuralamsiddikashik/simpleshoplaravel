@@ -65,9 +65,9 @@
                                     <td>
                                         <a href="{{ route('product.edit', [ $product->id ])}}" class="btn btn-sm btn-primary mr-1"><i class="fas fa-edit"></i></a>
                                       
-                                        <form class="d-inline" action="" method="POST">
-                                            {{-- @method('DELETE')
-                                            @csrf --}}
+                                        <form class="d-inline" action="{{ route('product.destroy',[$product->id ])}}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
                                             <button type="submit" class="btn btn-sm btn-danger mr-1"><i class="fas fa-trash"></i></button>
                                         </form>
                                     </td>

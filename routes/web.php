@@ -37,7 +37,7 @@ Route::group( ['prefix' => 'admin', 'middleware' => ['is_admin']], function () {
 
     Route::get( '/dashboard', function () {
         return view( 'admin.dashboard.index' );
-    } )->name('admin-dashboard');
+    } )->name( 'admin-dashboard' );
 
     Route::resource( 'product-category', '\App\Http\Controllers\Admin\ProductCategoryController' );
 
@@ -46,5 +46,8 @@ Route::group( ['prefix' => 'admin', 'middleware' => ['is_admin']], function () {
 } );
 
 Route::middleware( 'auth' )->namespace( 'Frontend' )->group( function () {
-    Route::get('/user/dashboard', 'UserDashboardController@dashboard')->name('user-dashboard');
+    
+    Route::get( '/user/dashboard', 'UserDashboardController@dashboard' )->name( 'user-dashboard' );
+
+    Route::get( '/user/checkout', 'UserDashboardController@checkout' )->name( 'user-checkout' );
 } );

@@ -151,7 +151,13 @@ class ProductController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy( $id ) {
-        //
+    public function destroy( Product $product ) {
+        if ( $product ) {
+            if ( file_exists( public_path( $product->product_image ) ) ) {
+                unlink( public_path( $product->product_image ) );
+            }
+            $product->delete();
+        }
+        return redirect()->back();
     }
 }

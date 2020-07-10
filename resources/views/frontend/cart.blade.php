@@ -102,7 +102,7 @@
                                 </tbody>
                             </table>
                             <div class="wc-proceed-to-checkout">
-                                <a href="http://wc.lab.themebucket.net/checkout/" class="checkout-button button alt wc-forward">
+                                <a href="{{ route('user-checkout')}}" class="checkout-button button alt wc-forward">
                                     Proceed to checkout
                                 </a>
                             </div>
