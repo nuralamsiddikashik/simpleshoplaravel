@@ -11,4 +11,8 @@ class ProductCategory extends Model {
     public function product() {
         return $this->hasMany( Product::class );
     }
+
+    public function setCategoryImageAttribute( $value ) {
+        $this->attributes['category_image'] = 'stroage/category/' . $value;
+    }
 }

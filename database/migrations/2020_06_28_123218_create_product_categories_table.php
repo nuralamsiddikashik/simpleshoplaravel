@@ -16,7 +16,7 @@ class CreateProductCategoriesTable extends Migration {
             $table->string( 'category_name' )->unique();
             $table->string( 'category_image' );
             $table->string( 'category_slug' );
-            $table->string( 'category_description' );
+            $table->text( 'category_description' );
             $table->timestamps();
         } );
     }

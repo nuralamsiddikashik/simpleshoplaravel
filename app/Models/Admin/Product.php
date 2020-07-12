@@ -18,4 +18,12 @@ class Product extends Model {
         return $this->product_sell_price == 0 ? $this->product_price : $this->product_sell_price;
     }
 
+    public function getFinalPriceAttribute() {
+        return $this->product_sell_price == 0 ? $this->product_price : $this->product_sell_price;
+    }
+
+    public function setProductImageAttribute( $value ) {
+        $this->attributes['product_image'] = 'stroage/product/' . $value;
+    }
+
 }

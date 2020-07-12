@@ -34,7 +34,6 @@
                                     <th>ID</th>
                                     <th>Category Name</th>
                                     <th>Category Image</th>
-                                    <th>Category Description</th>
                                     <th>Category Slug</th>
                                     <th>Parent Category</th>
                                     <th>Action</th>
@@ -51,7 +50,7 @@
                                         <div style="max-width: 70px; max-height:70; overflow:hidden"><img class="img-fluid" src="{{ asset( $product_category_items->category_image ) }}"></div>
                                     </td>
 
-                                    <td>{{ $product_category_items->category_description }}</td>
+                                   
                                     <td>{{ $product_category_items->category_slug }}</td>
                                     @if($product_category_items->parent_id == 0)
                                         <td></td>

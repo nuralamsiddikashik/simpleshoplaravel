@@ -68,7 +68,7 @@ class ProductController extends Controller {
             $product_image  = $request->product_image;
             $image_new_name = time() . '.' . $product_image->getClientOriginalExtension();
             $product_image->move( 'stroage/product/', $image_new_name );
-            $productAdd->product_image = '/stroage/product/' . $image_new_name;
+            $productAdd->product_image = $image_new_name;
         }
         if ( $productAdd->save() ) {
             return redirect()->back();
@@ -122,6 +122,7 @@ class ProductController extends Controller {
         ] );
 
         $product->product_title             = $request->product_title;
+        $product->product_slug              = Str::slug( $request->product_title, '-' );
         $product->product_price             = $request->product_price;
         $product->product_sell_price        = $request->product_sell_price;
         $product->product_description       = $request->product_description;
@@ -134,7 +135,7 @@ class ProductController extends Controller {
             $product_image  = $request->product_image;
             $image_new_name = time() . '.' . $product_image->getClientOriginalExtension();
             $product_image->move( 'stroage/product/', $image_new_name );
-            $product->product_image = '/stroage/product/' . $image_new_name;
+            $product->product_image = $image_new_name;
         }
 
         if ( $product->save() ) {

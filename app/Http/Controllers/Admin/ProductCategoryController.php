@@ -54,7 +54,7 @@ class ProductCategoryController extends Controller {
             $category_image = $request->category_image;
             $image_new_name = time() . '.' . $category_image->getClientOriginalExtension();
             $category_image->move( 'stroage/category/', $image_new_name );
-            $productCategory->category_image = '/stroage/category/' . $image_new_name;
+            $productCategory->category_image =  $image_new_name;
         }
         $productCategory->save();
 

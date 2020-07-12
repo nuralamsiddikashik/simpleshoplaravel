@@ -179,7 +179,10 @@
 <script src="{{asset('frontend')}}/assets/vendor/jquery.min.js"></script>
 <script src="{{asset('frontend')}}/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="{{asset('frontend')}}/assets/vendor/popper.min.js"></script>
+
 <script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('js/frontend.js')}}"></script>
+
 
 <!--init scripts-->
 <script src="{{asset('frontend')}}/assets/js/scripts.js"></script>
@@ -241,5 +244,6 @@
 
     })
 </script>
+@yield('script')
 </body>
 </html>
