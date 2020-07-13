@@ -9,6 +9,7 @@ use App\Models\Frontend\Order;
 use App\Models\Frontend\OrderDetail;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller {
     public function store( Request $request ) {
