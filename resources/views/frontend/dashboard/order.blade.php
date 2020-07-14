@@ -60,7 +60,7 @@
                                                 <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{ $order->order_total}}</span> for 3 items
                                             </td>
                                             <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-actions" data-title="Actions">
-                                                <a href="my-account-view-order.html" class="woocommerce-button button view">View</a>
+                                                <a href="{{ route ('order_detail',$order->id) }}" class="woocommerce-button button view">View</a>
                                             </td>
                                         </tr>
                                     @endforeach

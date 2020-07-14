@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Models\Frontend\Order;
-use Illuminate\Support\Collection;
 use App\Http\Controllers\Controller;
+use App\Models\Frontend\Order;
+use App\Models\Frontend\OrderDetail;
+use Illuminate\Support\Collection;
 
 class UserDashboardController extends Controller {
 
@@ -52,6 +53,14 @@ class UserDashboardController extends Controller {
         }
 
         return view( 'frontend.dashboard.order', compact( 'orders' ) );
+    }
+
+    public function orderDetail( $id ) {
+        $order_details = OrderDetail::where( 'order_id', $id )->get();
+        // $order_details = OrderDetail::all();
+        // dd( $order_details );
+        return view( 'frontend.dashboard.order_detail', compact( 'order_details' ) );
+
     }
 
 }
