@@ -77,7 +77,7 @@ class CartController extends Controller {
         }
     }
 
-    public function remove_from_cart(Request $request) {
+    public function remove_from_cart( Request $request ) {
 
         if ( session( 'cart' ) && count( session( 'cart' ) ) > 0 ) {
             session()->forget( 'cart.' . $request->id );
@@ -93,5 +93,13 @@ class CartController extends Controller {
 
     }
 
-  
+    public static function get_cart() {
+        
+        if ( session()->has( 'cart' ) ) {
+            return session( 'cart' );
+        } else {
+            return array();
+        }
+    }
+
 }

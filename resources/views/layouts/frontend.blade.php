@@ -46,7 +46,7 @@
             <div class="col-12">
                 <nav class="navbar navbar-expand-lg mainmenu">
                     <!--logo-->
-                    <a class="navbar-brand mr-5 text-dark float-left" href="index.html">
+                    <a class="navbar-brand mr-5 text-dark float-left" href="{{ route('home') }}">
                         <img class="" src="{{asset('frontend')}}/assets/img/logo.png" srcset="assets/img/logo@2x.png 2x" alt=""/>
                     </a>
                     <!--logo-->

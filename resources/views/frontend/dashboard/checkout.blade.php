@@ -65,14 +65,14 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="first_name">First Name</label>
-                                                            <input type="text" name="first_name" id="first_name" class="form-control" value="">
+                                                            <input type="text" name="first_name" id="first_name" class="form-control" value="{{ old('first_name') ? old('first_name') : (auth()->user() ? auth()->user()->first_name : '') }}">
                                                                                   
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="last_name">Last Name</label>
-                                                            <input type="text" name="last_name" id="last_name" class="form-control" value="">
+                                                            <input type="text" name="last_name" id="last_name" class="form-control" value="{{ old('last_name') ? old('last_name') : (auth()->user() ? auth()->user()->last_name : '') }}">
                                                           
                                                         </div>
                                                     </div>
@@ -81,7 +81,7 @@
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label for="company">Company (Optional)</label>
-                                                            <input type="text" name="company" id="company" class="form-control" value="">
+                                                            <input type="text" name="company" id="company" class="form-control" value="{{ old('company') ? old('company') : (auth()->user() ? auth()->user()->company : '') }}">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -94,7 +94,7 @@
                                                                     <div class="col-md-12">
                                                                         <div class="form-group">
                                                                             <label for="address_line_1">Address Line 1</label>
-                                                                            <input type="text" name="address_line_1" id="address_line_1" class="form-control" value="">
+                                                                            <input type="text" name="address_line_1" id="address_line_1" class="form-control" value="{{ old('address_line_1') ? old('address_line_1') : $orderInfo->address_line_1 }}">
                                                                           
                                                                         </div>
                                                                     </div>
@@ -103,7 +103,7 @@
                                                                     <div class="col-md-12">
                                                                         <div class="form-group">
                                                                             <label for="address_line_2">Address Line 2</label>
-                                                                            <input type="text" name="address_line_2" id="address_line_2" class="form-control" value="">
+                                                                            <input type="text" name="address_line_2" id="address_line_2" class="form-control" value="{{ old('address_line_2') ? old('address_line_2') : $orderInfo->address_line_2 }}">
                                                                           
                                                                         </div>
                                                                     </div>
@@ -112,14 +112,14 @@
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label for="city">City</label>
-                                                                            <input type="text" name="city" id="city" class="form-control" value="">
+                                                                            <input type="text" name="city" id="city" class="form-control" value="{{ old('city') ? old('city') : $orderInfo->city }}">
                                                                             
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label for="state">State</label>
-                                                                            <input type="text" name="state" id="state" class="form-control" value="">
+                                                                            <input type="text" name="state" id="state" class="form-control" value="{{ old('state') ? old('state') : $orderInfo->state }}">
                                                                           
                                                                         </div>
                                                                     </div>
@@ -128,7 +128,7 @@
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label for="zip">Zip</label>
-                                                                            <input type="text" name="zip" id="zip" class="form-control" value="">
+                                                                            <input type="text" name="zip" id="zip" class="form-control" value="{{ old('zip') ? old('zip') : $orderInfo->zip }}">
                                                                            
                                                                         </div>
                                                                     </div>
@@ -162,7 +162,7 @@
                                                                     <div class="col-md-12">
                                                                         <div class="form-group">
                                                                             <label for="s_address_line_1">Address Line 1</label>
-                                                                            <input type="text" name="s_address_line_1" id="s_address_line_1" class="form-control" value="">
+                                                                            <input type="text" name="s_address_line_1" id="s_address_line_1" class="form-control" value="{{ old('s_address_line_1') ? old('s_address_line_1') : $orderInfo->s_address_line_1 }}">
                                                                            
                                                                         </div>
                                                                     </div>
@@ -171,7 +171,7 @@
                                                                     <div class="col-md-12">
                                                                         <div class="form-group">
                                                                             <label for="s_address_line_2">Address Line 2</label>
-                                                                            <input type="text" name="s_address_line_2" id="s_address_line_2" class="form-control" value="">
+                                                                            <input type="text" name="s_address_line_2" id="s_address_line_2" class="form-control" value="{{ old('s_address_line_2') ? old('s_address_line_2') : $orderInfo->s_address_line_2 }}">
                                                                            
                                                                         </div>
                                                                     </div>
@@ -180,14 +180,14 @@
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label for="s_city">City</label>
-                                                                            <input type="text" name="s_city" id="s_city" class="form-control" value="">
+                                                                            <input type="text" name="s_city" id="s_city" class="form-control" value="{{ old('s_city') ? old('s_city') : $orderInfo->s_city }}">
                                                                             
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label for="s_state">State</label>
-                                                                            <input type="text" name="s_state" id="s_state" class="form-control" value="">
+                                                                            <input type="text" name="s_state" id="s_state" class="form-control" value="{{ old('s_state') ? old('s_state') : $orderInfo->s_state }}">
                                                                           
                                                                         </div>
                                                                     </div>
@@ -196,7 +196,7 @@
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label for="s_zip">Zip</label>
-                                                                            <input type="text" name="s_zip" id="s_zip" class="form-control" value="">
+                                                                            <input type="text" name="s_zip" id="s_zip" class="form-control" value="{{ old('s_zip') ? old('s_zip') : $orderInfo->s_zip }}">
                                                                           
                                                                         </div>
                                                                     </div>
@@ -217,7 +217,7 @@
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label for="phone">Phone</label>
-                                                            <input type="text" name="phone" id="phone" class="form-control" value="">
+                                                            <input type="text" name="phone" id="phone" class="form-control" value="{{ old('phone') ? old('phone') : (auth()->user() ? auth()->user()->phone : '') }}">
                                                             
                                                         </div>
                                                     </div>
@@ -226,11 +226,12 @@
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label for="email">Email</label>
-                                                            <input type="email" name="email" id="email" class="form-control" value="">
+                                                            <input type="email" name="email" id="email" class="form-control" value="{{ old('email') ? old('email') : (auth()->user() ? auth()->user()->email : '') }}">
                                                            
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @guest
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="form-group">
@@ -240,6 +241,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @endguest
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <h3>Additional information</h3>

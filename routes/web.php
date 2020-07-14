@@ -35,12 +35,9 @@ Route::post( '/remove_product', '\App\Http\Controllers\Frontend\CartController@r
 
 Route::get( '/checkout', '\App\Http\Controllers\Frontend\UserDashboardController@checkout' )->name( 'user-checkout' );
 
-Route::post('/orders','\App\Http\Controllers\Frontend\OrderController@store')->name('orders'); 
+Route::post( '/orders', '\App\Http\Controllers\Frontend\OrderController@store' )->name( 'orders' );
 
-
-Route::get('/thankyou/{order}','\App\Http\Controllers\Frontend\OrderController@thank_you')->name('thank_you'); 
-
-
+Route::get( '/thankyou/{order}', '\App\Http\Controllers\Frontend\OrderController@thank_you' )->name( 'thank_you' );
 
 Route::group( ['prefix' => 'admin', 'middleware' => ['is_admin']], function () {
 
@@ -54,9 +51,10 @@ Route::group( ['prefix' => 'admin', 'middleware' => ['is_admin']], function () {
 
 } );
 
-
-
 Route::middleware( 'auth' )->namespace( 'Frontend' )->group( function () {
-    
+
     Route::get( '/user/dashboard', 'UserDashboardController@dashboard' )->name( 'user-dashboard' );
+
+    Route::get( '/user/order', 'UserDashboardController@showOrder' )->name( 'user-order' );
+
 } );

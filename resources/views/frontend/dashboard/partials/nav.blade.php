@@ -4,7 +4,7 @@
             <a href="my-account-dashbord.html">Dashboard</a>
         </li>
         <li class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders">
-            <a href="my-account-order.html">Orders</a>
+            <a href="{{ route( 'user-order' )}}">Orders</a>
         </li>
         <li class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--downloads">
             <a href="my-account-downloads.html">Downloads</a>
