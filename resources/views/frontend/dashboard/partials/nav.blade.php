@@ -13,7 +13,7 @@
             <a href="my-account-address.html">Addresses</a>
         </li>
         <li class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-account">
-            <a href="my-account-ac-details.html">Account details</a>
+            <a href="{{ route('user-account')}}">Account details</a>
         </li>
         
         <li class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--customer-logout">

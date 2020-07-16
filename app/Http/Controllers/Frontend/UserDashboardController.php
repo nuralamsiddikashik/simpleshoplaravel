@@ -63,4 +63,8 @@ class UserDashboardController extends Controller {
 
     }
 
+    public function userAccount() {
+        return view( 'frontend.dashboard.account' );
+    }
+
 }

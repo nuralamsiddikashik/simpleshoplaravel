@@ -59,4 +59,6 @@ Route::middleware( 'auth' )->namespace( 'Frontend' )->group( function () {
 
     Route::get( '/user/detail/{id}', 'UserDashboardController@orderDetail' )->name( 'order_detail' );
 
+    Route::get( '/user/account', 'UserDashboardController@userAccount' )->name( 'user-account' );
+
 } );
