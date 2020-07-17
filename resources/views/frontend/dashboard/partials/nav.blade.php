@@ -1,7 +1,7 @@
 <nav class="woocommerce-MyAccount-navigation">
     <ul>
         <li class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--dashboard is-active">
-            <a href="my-account-dashbord.html">Dashboard</a>
+            <a href="{{ route('user-dashboard')}}">Dashboard</a>
         </li>
         <li class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders">
             <a href="{{ route( 'user-order' )}}">Orders</a>

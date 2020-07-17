@@ -32,7 +32,7 @@
 
                             <div class="woocommerce-MyAccount-content">
                                 <div class="woocommerce-notices-wrapper"></div>
-                                <p>Hello <strong>admin</strong> (not <strong>admin</strong>? <a href="#">Log out</a>)</p>
+                                <p>Hello <strong>{{ auth()->user()->first_name}}</strong> (not <strong>{{ auth()->user()->first_name}}</strong>? <a href="#">Log out</a>)</p>
 
                                 <p>From your account dashboard you can view your <a href="#">recent orders</a>, manage your <a href="#">shipping and billing addresses</a>, and <a href="#">edit your password and account details</a>.</p>
 

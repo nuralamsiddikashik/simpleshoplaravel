@@ -136,52 +136,15 @@
                             <h2>Related products</h2>
 
                             <ul class="products columns-3">
-                                <li class="product">
-                                    <div class="product-wrap">
-                                        <a href="#" class="">
-                                            <img src="assets/img/p10.jpg" alt="">
-                                        </a>
-                                        <a href="#" class="button product_type_simple add_to_cart_button ajax_add_to_cart">
-                                            <i class="fa fa-shopping-basket"></i>
-                                        </a>
-                                    </div>
-                                    <div class="woocommerce-product-title-wrap">
-                                        <h2 class="woocommerce-loop-product__title">
-                                            <a href="#">Stitched leather sports shoe</a>
-                                        </h2>
-                                        <a href="#" class="wish-list"><i class="fa fa-heart-o"></i></a>
-                                    </div>
-                                    <span class="price">
-                                    <span class="woocommerce-Price-amount amount">
-                                        <span class="woocommerce-Price-currencySymbol">$</span> 18.00
-                                    </span>
-                                </span>
-                                </li>
-                                <li class="product">
-                                    <div class="product-wrap">
-                                        <a href="#" class="">
-                                            <img src="assets/img/p11.jpg" alt="">
-                                        </a>
-                                        <a href="#" class="button product_type_simple add_to_cart_button ajax_add_to_cart">
-                                            <i class="fa fa-shopping-basket"></i>
-                                        </a>
-                                    </div>
-                                    <div class="woocommerce-product-title-wrap">
-                                        <h2 class="woocommerce-loop-product__title">
-                                            <a href="#">Stitched leather sports shoe</a>
-                                        </h2>
-                                        <a href="#" class="wish-list"><i class="fa fa-heart-o"></i></a>
-                                    </div>
-                                    <span class="price">
-                                    <span class="woocommerce-Price-amount amount">
-                                        <span class="woocommerce-Price-currencySymbol">$</span> 18.00
-                                    </span>
-                                </span>
-                                </li>
+         
+                           @foreach ($related_products as $related_product)
+                               
+                        
+                              
                                 <li class="product last">
                                     <div class="product-wrap">
                                         <a href="#" class="">
-                                            <img src="assets/img/p12.jpg" alt="">
+                                            <img src="{{ asset($related_product->product_image)}}" alt="">
                                         </a>
                                         <a href="#" class="button product_type_simple add_to_cart_button ajax_add_to_cart">
                                             <i class="fa fa-shopping-basket"></i>
@@ -189,7 +152,7 @@
                                     </div>
                                     <div class="woocommerce-product-title-wrap">
                                         <h2 class="woocommerce-loop-product__title">
-                                            <a href="#">Stitched leather sports shoe</a>
+                                        <a href="#">{{$related_product->product_title}}</a>
                                         </h2>
                                         <a href="#" class="wish-list"><i class="fa fa-heart-o"></i></a>
                                     </div>
@@ -199,6 +162,7 @@
                                     </span>
                                 </span>
                                 </li>
+                                @endforeach 
                             </ul>
 
                         </section>

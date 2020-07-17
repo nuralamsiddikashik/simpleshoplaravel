@@ -25,7 +25,10 @@ Route::get( 'shop', 'HomeController@shop' )->name( 'shop' );
 
 Route::get( '/product-category/{category_slug}', 'HomeController@showProduct' )->name( 'product-category' );
 
-Route::get( '/product/{slug}', 'HomeController@showSingleProduct' )->name( 'product-single' );
+// Route::get( '/product/{slug}', 'HomeController@showSingleProduct' )->name( 'product-single' );
+
+Route::get( '/product/{slug}', 'Frontend\ProductController@show' )->name( 'product-single' );
+
 
 Route::post( '/add-to-cart', '\App\Http\Controllers\Frontend\CartController@add_to_cart' )->name( 'add_to_cart' );
 
