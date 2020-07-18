@@ -54,7 +54,7 @@
                                                 <time datetime="2019-06-12T06:25:27+00:00">{{ $order->created_at->diffForHumans() }}</time>
                                             </td>
                                             <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-status" data-title="Status">
-                                                {{ $order->order_status }}
+                                                {{ $order->payment_status }}
                                             </td>
                                             <td class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-total" data-title="Total">
                                                 <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{ $order->order_total}}</span> for 3 items

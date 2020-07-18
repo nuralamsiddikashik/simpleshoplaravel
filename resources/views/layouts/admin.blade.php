@@ -221,6 +221,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
           <li class="nav-item has-treeview menu-open">
+            <a href="{{ route('show-order')}}" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Order
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item has-treeview menu-open">
             <form class="nav-link" action="{{ route('logout')}}" method="POST">
                 @csrf
                 <input class="nav-link" type="submit" value="Logout">

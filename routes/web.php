@@ -29,7 +29,6 @@ Route::get( '/product-category/{category_slug}', 'HomeController@showProduct' )-
 
 Route::get( '/product/{slug}', 'Frontend\ProductController@show' )->name( 'product-single' );
 
-
 Route::post( '/add-to-cart', '\App\Http\Controllers\Frontend\CartController@add_to_cart' )->name( 'add_to_cart' );
 
 Route::get( '/cart', 'HomeController@cart' )->name( 'cart' );
@@ -52,6 +51,13 @@ Route::group( ['prefix' => 'admin', 'middleware' => ['is_admin']], function () {
 
     Route::resource( 'product', '\App\Http\Controllers\Admin\ProductController' );
 
+    Route::get( '/show-order', '\App\Http\Controllers\Admin\OrderController@showOrder' )->name( 'show-order' );
+
+    Route::get( '/show-order/{order}', '\App\Http\Controllers\Admin\OrderController@orderDetails' )->name( 'show-order-details' );
+
+    Route::put( '/show-order/{order}', '\App\Http\Controllers\Admin\OrderController@updateOrder' )->name( 'update-order' );
+
+
 } );
 
 Route::middleware( 'auth' )->namespace( 'Frontend' )->group( function () {
@@ -63,5 +69,7 @@ Route::middleware( 'auth' )->namespace( 'Frontend' )->group( function () {
     Route::get( '/user/detail/{id}', 'UserDashboardController@orderDetail' )->name( 'order_detail' );
 
     Route::get( '/user/account', 'UserDashboardController@userAccount' )->name( 'user-account' );
+
+    Route::put( '/change-password', 'UserDashboardController@userChangePassword' )->name( 'change-password' );
 
 } );

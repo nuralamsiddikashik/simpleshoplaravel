@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Frontend\Order;
 use App\Models\Frontend\OrderDetail;
+use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserDashboardController extends Controller {
 
@@ -64,7 +67,26 @@ class UserDashboardController extends Controller {
     }
 
     public function userAccount() {
+
         return view( 'frontend.dashboard.account' );
+    }
+
+    public function userChangePassword( Request $request ) {
+
+        $request->validate( [
+            'password_current'      => 'required|min:8',
+            'password'              => 'required|confirmed|min:6',
+            'password_confirmation' => 'required|min:8',
+        ] );
+
+        $user = Auth::user();
+
+        if ( Hash::check( $request->input( 'password_current' ), Auth::user()->password ) ) {
+            $user->password = bcrypt( $request->input( 'password' ) );
+            $user->save();
+        }
+        return redirect()->back();
+
     }
 
 }

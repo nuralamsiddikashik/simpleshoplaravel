@@ -32,10 +32,11 @@ class OrderController extends Controller {
                 'password' => 'required|min:8',
                 'email'    => 'unique:users,email',
             ] );
-            $user        = new User;
-            $user->email = $request->input( 'email' );
+            $user           = new User;
+            $user->email    = $request->input( 'email' );
+            $user->password = bcrypt( $request->input( 'password' ) );
         }
-        $user->password   = bcrypt( $request->input( 'password' ) );
+
         $user->first_name = $request->input( 'first_name' );
         $user->last_name  = $request->input( 'last_name' );
         $user->company    = $request->input( 'company' );
