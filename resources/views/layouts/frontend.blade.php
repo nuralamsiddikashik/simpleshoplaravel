@@ -62,7 +62,7 @@
                     <!--search start-->
                     <div id="form-search" class="form-search">
                         <div class="input-group">
-                            <input type="search" class="form-control" placeholder="Search for...">
+                            <input id="product_search" type="search" class="form-control" placeholder="Search for...">
                             <span class="input-group-btn">
                                 <button id="form-search-close-btn" class="btn" type="button">
                                     <span class="svg svg--cross">
@@ -76,6 +76,7 @@
                             </span>
                         </div>
                     </div>
+                    <div class="search-output"></div>
                     <!--search end-->
                     <!--nav link-->
                     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
@@ -200,6 +201,9 @@
 </script>
 
 <script>
+    
+    // Add To Cart 
+
     $(document).on('click', '.add-to-cart', function(e) {
         e.preventDefault()
 
@@ -220,6 +224,8 @@
             })
             .catch()
     })
+
+    // Remove From Cart 
 
     $(document).on('click', '.remove_from_cart_button', function(e){
        
@@ -243,7 +249,36 @@
         .catch(err => console.log(err))
 
     })
+
+ // Search Product On Header 
+    function delay(callback, ms) {
+        var timer = 0;
+        return function() {
+            var context = this, args = arguments;
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+            callback.apply(context, args);
+            }, ms || 0);
+        };
+    }
+
+    $(document).on('keyup','#product_search',delay(function(){
+       
+       if($(this).val().length >= 5){
+           axios.post('{{ route('search')}}',{product_title:$(this).val()})
+           .then(response => {
+               console.log(response.data)
+               $('.search-output').html(response.data); 
+           })
+       }
+
+   }, 2000))
+
+   // End Search Product 
+
 </script>
+
+
 @yield('script')
 </body>
 </html>

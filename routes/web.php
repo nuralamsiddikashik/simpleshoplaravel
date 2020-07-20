@@ -39,6 +39,8 @@ Route::get( '/checkout', '\App\Http\Controllers\Frontend\UserDashboardController
 
 Route::post( '/orders', '\App\Http\Controllers\Frontend\OrderController@store' )->name( 'orders' );
 
+Route::post( '/search', '\App\Http\Controllers\Frontend\SearchController@index' )->name( 'search' );
+
 Route::get( '/thankyou/{order}', '\App\Http\Controllers\Frontend\OrderController@thank_you' )->name( 'thank_you' );
 
 Route::group( ['prefix' => 'admin', 'middleware' => ['is_admin']], function () {
@@ -56,7 +58,6 @@ Route::group( ['prefix' => 'admin', 'middleware' => ['is_admin']], function () {
     Route::get( '/show-order/{order}', '\App\Http\Controllers\Admin\OrderController@orderDetails' )->name( 'show-order-details' );
 
     Route::put( '/show-order/{order}', '\App\Http\Controllers\Admin\OrderController@updateOrder' )->name( 'update-order' );
-
 
 } );
 
