@@ -58,6 +58,7 @@ Route::group( ['prefix' => 'admin', 'middleware' => ['is_admin']], function () {
     Route::get( '/show-order/{order}', '\App\Http\Controllers\Admin\OrderController@orderDetails' )->name( 'show-order-details' );
 
     Route::put( '/show-order/{order}', '\App\Http\Controllers\Admin\OrderController@updateOrder' )->name( 'update-order' );
+    Route::resource( '/coupon', '\App\Http\Controllers\Admin\CouponController' );
 
 } );
 
