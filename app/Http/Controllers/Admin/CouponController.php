@@ -13,7 +13,8 @@ class CouponController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        //
+        $coupon = Coupon::orderBy( 'created_at', 'DESC' )->paginate( 10 );
+        return view( 'admin.coupon.index', compact( 'coupon' ) );
     }
 
     /**
@@ -77,8 +78,8 @@ class CouponController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit( $id ) {
-        //
+    public function edit( Coupon $coupon ) {
+        return view( "admin.coupon.edit", compact( 'coupon' ) );
     }
 
     /**
