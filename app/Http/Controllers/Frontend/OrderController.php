@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Http\Controllers\Frontend\CartController;
+use session;
+use App\User;
+use App\Models\Admin\Coupon;
+use Illuminate\Http\Request;
 use App\Models\Admin\Product;
 use App\Models\Frontend\Order;
+use App\Http\Controllers\Controller;
 use App\Models\Frontend\OrderDetail;
-use App\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Frontend\CartController;
 
 class OrderController extends Controller {
     public function store( Request $request ) {
@@ -65,7 +67,15 @@ class OrderController extends Controller {
         $order->order_total      = CartController::cartFinalPrice();
         $order->payment_status   = 'pending';
         $order->order_status     = 'pending';
+        $order->sub_total        = CartController::subTotal();
+        $order->coupon_amount    = CartController::coupon_discount_amount();
         $order->save();
+
+        $db_coupon       = Coupon::where( 'code', session( 'coupon' ) )->first();
+        $db_coupon->used = $db_coupon->used + 1;
+        $db_coupon->save();
+
+        session()->forget( 'coupon' );
 
         $get_cart            = session( 'cart' );
         $order_details_array = array();

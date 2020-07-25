@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
+use App\Models\Admin\Coupon;
+use Illuminate\Http\Request;
 use App\Models\Admin\Product;
 use App\Services\CartService;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CartController extends Controller {
     public function add_to_cart( Request $request ) {
@@ -51,15 +52,30 @@ class CartController extends Controller {
 
     public static function cartFinalPrice() {
 
-        $subTotal       = self::subTotal();
-        $tax            = 0;
-        $discount       = 0;
+        $subTotal = self::subTotal();
+        $tax      = 0;
         $shippingCharge = 0;
 
-        $total = $subTotal + $tax + $shippingCharge - $discount;
+        // Coupon Discount 
+        $couponAmount = self::coupon_discount_amount();
+
+        $total = $subTotal + $tax + $shippingCharge - $couponAmount;
         return $total;
 
     }
+
+    public static function coupon_discount_amount() {
+        $couponCode = session( 'coupon' );
+        $coupon     = Coupon::where( 'code', $couponCode )->first();
+
+        if ( $coupon ) {
+            return $coupon->amount;
+        }
+
+        return 0;
+    }
+
+    
 
     public static function getMarkUp() {
 
@@ -94,7 +110,7 @@ class CartController extends Controller {
     }
 
     public static function get_cart() {
-        
+
         if ( session()->has( 'cart' ) ) {
             return session( 'cart' );
         } else {

@@ -16,7 +16,9 @@
     </div>
 </section>
 
-{{-- {{ session()->forget('cart')}} --}}
+{{ session('coupon')}}
+{{-- {{session()->forget('coupon')}} --}}
+{{-- {{dd(date('Y-m-d H:i:s'))}} --}}
 
 <main class="site-main">
     <!--shop category start-->
@@ -31,6 +33,18 @@
                         <!-- .entry-header -->
                         <div class="entry-content">
                             <div class="woocommerce"><div class="woocommerce-notices-wrapper"></div>
+                                <form action="{{ route('coupon-submit')}}" method="POST">
+                                    @csrf
+                                    <div class="coupon">
+
+                                        <label for="coupon_code">Coupon:</label>
+
+                                         <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="Coupon code"> 
+
+                                         <button type="submit" class="button" name="apply_coupon" value="Apply coupon">Apply coupon</button>
+                                    </div>
+                                </form>
+
                                 <form class="woocommerce-cart-form" action="" method="">
                                     <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
                                         <thead>
@@ -74,9 +88,7 @@
                                 
                                         <tr>
                                             <td colspan="6" class="actions">
-                                                <div class="coupon">
-                                                    <label for="coupon_code">Coupon:</label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="Coupon code"> <button type="submit" class="button" name="apply_coupon" value="Apply coupon">Apply coupon</button>
-                                                </div>
+                                               
                                                 <button type="submit" class="button" name="update_cart" value="Update cart" disabled="">Update cart</button>
                                                 <input type="hidden" id="woocommerce-cart-nonce" name="woocommerce-cart-nonce" value="27da9ce3e8"><input type="hidden" name="_wp_http_referer" value="/cart/">				</td>
                                         </tr>
@@ -95,12 +107,18 @@
                             <table cellspacing="0" class="shop_table shop_table_responsive">
                                 <tbody><tr class="cart-subtotal">
                                     <th>Subtotal</th>
-                                    <td data-title="Subtotal"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>18.00</span></td>
+                                    <td data-title="Subtotal"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{Cart::subTotal()}}</span></td>
                                 </tr>
                                 <tr class="order-total">
-                                    <th>Total</th>
-                                    <td data-title="Total"><strong><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>18.00</span></strong> </td>
+                                    <th>Discount</th>
+                                    <td data-title="Total"><strong><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{Cart::coupon_discount_amount()}}</span></strong> </td>
                                 </tr>
+
+                                <tr class="order-total">
+                                    <th>Total</th>
+                                    <td data-title="Total"><strong><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{Cart::cartFinalPrice()}}</span></strong> </td>
+                                </tr>
+
                                 </tbody>
                             </table>
                             <div class="wc-proceed-to-checkout">

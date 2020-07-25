@@ -60,7 +60,7 @@
                     <!--responsive toggle icon-->
 
                     <!--search start-->
-                    <div id="form-search" class="form-search">
+                    {{-- <div id="form-search" class="form-search">
                         <div class="input-group">
                             <input id="product_search" type="search" class="form-control" placeholder="Search for...">
                             <span class="input-group-btn">
@@ -75,8 +75,8 @@
                                 </button>
                             </span>
                         </div>
-                    </div>
-                    <div class="search-output"></div>
+                    </div> --}}
+                    {{-- <div class="search-output"></div> --}}
                     <!--search end-->
                     <!--nav link-->
                     <div class="collapse navbar-collapse" id="navbarsExampleDefault">

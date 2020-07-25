@@ -43,6 +43,8 @@ Route::post( '/search', '\App\Http\Controllers\Frontend\SearchController@index' 
 
 Route::get( '/thankyou/{order}', '\App\Http\Controllers\Frontend\OrderController@thank_you' )->name( 'thank_you' );
 
+Route::post( '/coupon-submit', '\App\Http\Controllers\Frontend\CouponController@addCoupon' )->name( 'coupon-submit' );
+
 Route::group( ['prefix' => 'admin', 'middleware' => ['is_admin']], function () {
 
     Route::get( '/dashboard', function () {
