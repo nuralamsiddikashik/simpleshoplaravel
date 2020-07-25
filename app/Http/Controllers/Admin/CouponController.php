@@ -89,8 +89,32 @@ class CouponController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update( Request $request, $id ) {
-        //
+    public function update( Request $request, Coupon $coupon ) {
+
+        $request->validate( [
+            'name'       => 'required',
+            'code'       => 'required',
+            'starts_at'  => 'required',
+            'expires_at' => 'required',
+            'amount'     => 'required',
+            'max_uses'   => 'required',
+        ] );
+
+        $coupon->name        = $request->input( 'name' );
+        $coupon->code        = $request->input( 'code' );
+        $coupon->starts_at   = $request->input( 'starts_at' );
+        $coupon->expires_at  = $request->input( 'expires_at' );
+        $coupon->description = $request->input( 'description' );
+        $coupon->status      = $request->input( 'status' );
+        $coupon->is_fixed    = $request->input( 'is_fixed' );
+        $coupon->amount      = $request->input( 'amount' );
+        $coupon->max_uses    = $request->input( 'max_uses' );
+
+        if ( $coupon->save() ) {
+            return redirect()->route( 'coupon.index' );
+        } else {
+            return redirect()->back( 'error', 'Please try again.' );
+        }
     }
 
     /**
@@ -99,7 +123,11 @@ class CouponController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy( $id ) {
-        //
+    public function destroy( Coupon $coupon ) {
+        if ( $coupon->delete() ) {
+            return redirect()->route( 'coupon.index' );
+        } else {
+            return redirect()->back( 'error', 'Please try again.' );
+        }
     }
 }

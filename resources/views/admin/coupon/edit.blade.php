@@ -28,7 +28,7 @@
                             </div>
                         </div>
                         <div class="card-body p-0">
-                            <form action="" method="POST">
+                            <form action="{{ route('coupon.update',[$coupon->id])}}" method="POST">
                                 @csrf
                                 @method('PUT')
                                 <div class="card-body">
@@ -51,8 +51,48 @@
                                         <label for="expires_at">Expaire Date</label>
                                         <input class="form-control datetimepicker" type="text" name="expires_at" id="expires_at" value="{{ $coupon->expires_at }}">
                                     </div>
-                                   
+
+                                    <div class="form-group">
+                                        <label for="status">Status</label>
+                                       <select class="form-control" name="status" id="status">
+                                            <option value="1"
+                                                {{ old('status') ? (old('status') == 1 ? "selected='selected'" : '') : (1 == $coupon->status ? "selected='selected'" : '') }}>
+                                                Active
+                                            </option>
+
+                                            <option value="0"
+                                                {{ old('status') ? (old('status') == 0 ? "selected='selected'" : '') : (0 == $coupon->status ? "selected='selected'" : '') }}>
+                                                Inactive
+                                            </option>
+
+                                       </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="is_fixed">Is Fixed</label>
+                                        <select name="is_fixed" id="is_fixed" class="form-control">
+                                            <option value="1"
+                                                {{ old('is_fixed') ? (old('is_fixed') == 1 ? "selected='selected'" : '') : (1 == $coupon->is_fixed ? "selected='selected'" : '') }}>
+                                                Yes
+                                            </option>
+                                            <option value="0"
+                                                {{ old('is_fixed') ? (old('is_fixed') == 0 ? "selected='selected'" : '') : (0 == $coupon->is_fixed ? "selected='selected'" : '') }}>
+                                                No
+                                            </option>
+                                    </div>
+
+                            
+                                    <div class="form-group">
+                                        <label for="amount">Amount</label>
+                                        <input class="form-control" type="text" id="amount" name="amount" value="{{ $coupon->amount }}">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="max_uses">Uses</label>
+                                        <input class="form-control" type="text" id="max_uses" name="max_uses" value="{{ $coupon->max_uses }}">
+                                    </div>
                                 </div>
+                                <input type="submit" value="Update" class="btn btn-primary text-light">
                             </form>
                         </div>
                     </div>

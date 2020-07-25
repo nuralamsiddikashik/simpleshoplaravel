@@ -57,6 +57,12 @@
                                                 <td>{{ $coupon_item->max_uses}}</td>
                                                 <td>
                                                     <a href="{{route('coupon.edit',[$coupon_item->id])}}" class="btn btn-sm btn-primary mr-1"><i class="fas fa-edit"></i></a>
+
+                                                    <form class="d-inline" action="{{ route('coupon.destroy',[$coupon_item->id ])}}" method="POST">
+                                                        @method('DELETE')
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-sm btn-danger mr-1"><i class="fas fa-trash"></i></button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach
